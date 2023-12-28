@@ -52,15 +52,18 @@ class UserForm extends Component
        $this->validate();
        
        // $loadImage = $this->uploadImage($this->image);
+        $data = [];
         if ($this->image) {
-            $this->image = $this->uploadImage();
+            $data = $this->uploadImage();
             $this->cleanimage();
         }
         // dd($loadImage);
-        $img = $this->image = $data['data']['link'];
-        $this->user->image()->create([
-            'url' => $img,
-        ]);
+        if(count($data) > 0){
+            $this->image = $data['data']['link'];
+            $this->user->image()->create([
+                'url' => $this->image,
+            ]);
+        }
         return to_route('blog')->with('status','Datos creados exitosamente');
 
     }
