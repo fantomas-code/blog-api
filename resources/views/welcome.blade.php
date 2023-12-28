@@ -32,6 +32,11 @@
             @endif
 
             <div class="max-w-7xl mx-auto p-6 lg:p-8">
+            @if (session('status'))
+                <div class="w-[100%] p-2 mx-auto my-5 text-xl italic tracking-widest text-center shadow shadow-black text-white bg-[#a56f1f]">
+                    {{ session('status') }}
+                </div>
+            @endif
                 <div class="flex justify-center">
                     <a href="{{ route('user.create') }}">
                         Crear usuario

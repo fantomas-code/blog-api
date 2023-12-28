@@ -45,10 +45,10 @@
     </style>
     <a href="{{ route('blog') }}">Inicio</a>
 
-    <form wire:submit="userRegister" enctype="multipart/form-data">
+    <form wire:submit="userRegister" >
 
-        @if ($this->image)
-            <img src="{{ $image?->temporaryUrl() }}" />
+        @if ($this->imag)
+            <img src="{{ $imag?->temporaryUrl() }}" />
         @endif
 
         <input wire:model="user.name" type="text" placeholder="Nombre">
@@ -67,8 +67,12 @@
         @error("user.email")
             <span class="text-red-300">{{ $message }}</span>
         @enderror
-        <input wire:model="image" accept="image/*" type="file" >
-        @error("image")
+        <input wire:model="password" type="password" placeholder="Password">
+        @error("password")
+            <span class="text-red-300">{{ $message }}</span>
+        @enderror
+        <input wire:model="imag" accept="image/*" type="file" >
+        @error("imag")
             <span class="text-red-300">{{ $message }}</span>
         @enderror
         <button type="submit">
